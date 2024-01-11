@@ -1,65 +1,43 @@
-# Automatização de Tarefas com Python e PyAutoGUI
+## Bot-FGTS
 
-Este projeto visa automatizar tarefas específicas relacionadas ao Conectividade Social usando Python e a biblioteca PyAutoGUI para interação com a interface gráfica.
+Este projeto consiste em um bot para interagir com o Conectividade Social, realizando a extração de dados, como Extrato FGTS e Chave FGTS.
 
-## Requisitos
+### Estrutura do Projeto
 
-Certifique-se de ter as seguintes bibliotecas instaladas:
-
-```bash
-pip install pyautogui
+```markdown
+bot-fgts
+│
+├── utils
+│   ├── __init__.py
+│   ├── escolha.py
+│   ├── extrato_fgts.py
+│   ├── chave_fgts.py
+│   └── pasta_util.py
+│
+├── main.py
+│
+└── requirements.txt
 ```
 
-## Estrutura do Projeto
+### Configuração
 
-- [main.py](main.py): Módulo principal que contém o menu principal e chama as funções relacionadas.
-- [extrato_fgts.py](extrato_fgts.py): Módulo responsável por extrair o extrato do FGTS.
-- [pasta_util.py](pasta_util.py): Módulo com funções utilitárias relacionadas a pastas.
-
-## Como Usar
-
-1. Clone o repositório:
-
-```bash
-git clone https://github.com/seu-usuario/nome-do-repositorio.git
-cd nome-do-repositorio
-```
-
-2. Instale as dependências:
+Antes de executar o script, certifique-se de ter todas as dependências instaladas. Para isso, utilize o comando:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-3. Execute o código principal:
+### Uso
 
-```bash
-python main.py
-```
+1. Execute o script `main.py` para acessar o menu principal.
+2. Escolha a opção desejada (Extrato FGTS, Chave FGTS, etc.).
+3. Siga as instruções apresentadas na tela para fornecer os dados necessários.
+4. O bot realizará as interações necessárias no Conectividade Social e extrairá os dados.
 
-## Funcionalidades
+### Notas Importantes
 
-### `main.py`
+- Certifique-se de ter o Google Chrome instalado.
 
-- Menu principal para extrair dados do Conectividade Social.
-- Chama funções relacionadas ao extrato do FGTS e à chave do FGTS.
+### Licença
 
-### `extrato_fgts.py`
-
-- Função `extratoFGTS` para extrair o extrato do FGTS interagindo com a interface gráfica.
-
-### `pasta_util.py`
-
-- Função `criar_pasta` para criar uma pasta se ela não existir.
-
-## Contribuições
-
-Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou pull requests.
-
-## Autor
-
-[Seu Nome]
-
-## Licença
-
-Este projeto está licenciado sob a Licença MIT - consulte o arquivo [LICENSE.md](LICENSE.md) para obter detalhes.
+Este projeto está licenciado sob a MIT License - consulte o arquivo [LICENSE](LICENSE) para obter detalhes.

@@ -7,9 +7,9 @@ import pyautogui as bot
 from utils.pasta_util import criar_pasta
 
 
-def extratoFGTS(nome_trabalhador, base_conta):
+def chaveFGTS(nome_trabalhador, base_conta):
     '''
-    Função para imprimir o extrato do FGTS, interagindo
+    Função para imprimir a chave do FGTS, interagindo
     com o conectividade social.
 
     Args:
@@ -17,7 +17,8 @@ def extratoFGTS(nome_trabalhador, base_conta):
         base_conta (str): Informações relacionadas à conta.
 
     Returns:
-        bool: True se a operação foi concluída com sucesso,
+        bool:
+        True se a operação foi concluída com sucesso,
         False se ocorreu um erro.
     '''
 
@@ -40,19 +41,7 @@ def extratoFGTS(nome_trabalhador, base_conta):
         bot.press('enter')
 
         sleep(5)
-        bot.click(1807, 315, duration=0.1)
-        sleep(5)
-        tab(13)  # visualizar impressão
-        bot.press('enter')
-
-        sleep(5)
-        bot.click(1807, 315)  # clique para melhorar o tab
-        sleep(5)
-        tab(1)  # imprimir
-        bot.press('enter')
-
-        sleep(5)
-        bot.press('enter')
+        # logica para colocar data de movimentação
 
         # Criar a pasta para armazenar os documentos
         diretorio_downloads = os.path.expanduser('~') + '/Downloads'
