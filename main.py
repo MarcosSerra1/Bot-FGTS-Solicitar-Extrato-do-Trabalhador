@@ -3,8 +3,8 @@ Este script extrai dados do conectividade social, incluindo:
     1. Extrato FGTS
     2. Chave FGTS
 '''
-from utils.escolha import (abrir_chrome, acessar_site, opcao_extrato,
-                           selecionar_certificado)
+from utils.escolha import (abrir_chrome, acessar_site, opcao_chave,
+                           opcao_extrato, selecionar_certificado)
 from utils.extrato_fgts import extratoFGTS
 
 
@@ -34,8 +34,13 @@ def main():
 
         elif opcao == '2':
             # Chave FGTS
-            # Adicione a lógica para a função chaveFGTS
-            pass
+            nome_trabalhador = input("Digite o nome do trabalhador: ")
+            base_conta = input("Digite a base da conta: ")
+            posicao_certificado = input("Digite a posição do certificado: ")
+            abrir_chrome()
+            acessar_site()
+            selecionar_certificado(posicao_certificado)
+            opcao_chave()
 
         elif opcao == '0':
             print("Saindo do programa. Até mais!")

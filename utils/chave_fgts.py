@@ -1,13 +1,15 @@
 # extrato_fgts.py
-import os
+# import os
 from time import sleep
 
 import pyautogui as bot
 
-from utils.pasta_util import criar_pasta
+# from utils.pasta_util import criar_pasta
 
 
-def chaveFGTS(nome_trabalhador, base_conta):
+def chaveFGTS(
+        nome_trabalhador, base_conta, data_movimentacao, cod_movimentacao,
+        cod_saque, pensao_fgts='Não'):
     '''
     Função para imprimir a chave do FGTS, interagindo
     com o conectividade social.
@@ -41,34 +43,60 @@ def chaveFGTS(nome_trabalhador, base_conta):
         bot.press('enter')
 
         sleep(5)
-        # logica para colocar data de movimentação
+        # data de movimentação
+        bot.click(1807, 315, duration=0.1)
+        tab(14)
+        bot.write(data_movimentacao)
+
+        # código movimentação
+        tab(2)
+        bot.write(cod_movimentacao)
+
+        # código saque
+        tab(2)
+        bot.write(cod_saque)
+
+        # pensao FGTS
+        tab(1)
+        bot.write(pensao_fgts)
+
+        # botão continuar
+        tab(3)
+        bot.press('enter')
+
+        # confirmar
+        bot.click(1807, 315, duration=0.1)
+        tab(23)
+        bot.press('enter')
+        sleep(3)
+        bot.press('enter')
 
         # Criar a pasta para armazenar os documentos
-        diretorio_downloads = os.path.expanduser('~') + '/Downloads'
-        caminho_pasta_fgts = os.path.join(diretorio_downloads, 'FGTS')
-        sleep(10)
-        if criar_pasta(caminho_pasta_fgts):
-            # Configurar o caminho completo para o documento
-            caminho_documento = os.path.join(
-                caminho_pasta_fgts, f'EXTRATO FGTS {nome_trabalhador}.pdf')
+        # diretorio_downloads = os.path.expanduser('~') + '/Downloads'
+        # caminho_pasta_fgts = os.path.join(diretorio_downloads, 'FGTS')
+        # sleep(10)
+        # if criar_pasta(caminho_pasta_fgts):
+        #     # Configurar o caminho completo para o documento
+        #     caminho_documento = os.path.join(
+        #         caminho_pasta_fgts, f'EXTRATO FGTS {nome_trabalhador}.pdf')
 
-            # Configurar o caminho completo para o documento
-            bot.click(1300, 69, duration=1)  # Caminho da pasta FGTS
-            bot.press('delete')
-            bot.write(caminho_pasta_fgts)
-            bot.press('enter')
+        #     # Configurar o caminho completo para o documento
+        #     bot.click(1300, 69, duration=1)  # Caminho da pasta FGTS
+        #     bot.press('delete')
+        #     bot.write(caminho_pasta_fgts)
+        #     bot.press('enter')
 
-            # Configurar o nome do documento
-            sleep(5)
-            # Cordenada para colocar o Nome do Documento
-            bot.click(788, 886, duration=1)
-            bot.write(f'EXTRATO FGTS {nome_trabalhador}')  # nome do documento
-            bot.press('enter')
+        #     # Configurar o nome do documento
+        #     sleep(5)
+        #     # Cordenada para colocar o Nome do Documento
+        #     bot.click(788, 886, duration=1)
+        #     bot.write(f'EXTRATO FGTS {nome_trabalhador}')  # nome do documento
+        #     bot.press('enter')
 
-            print(f"Extrato do FGTS salvo em: {caminho_documento}")
-            return True
-        else:
-            return False
+        #     print(f"Extrato do FGTS salvo em: {caminho_documento}")
+        #     return True
+        # else:
+        #     return False
 
     except Exception as e:
         print(f"Erro ao extrair o extrato do FGTS: {e}")
@@ -77,3 +105,6 @@ def chaveFGTS(nome_trabalhador, base_conta):
 
 def tab(cliques):
     bot.press('tab', cliques)
+
+
+chaveFGTS('RAELY KATTARINE FREITAS MOTA COSTA', 'b', '', '', '')
